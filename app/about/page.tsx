@@ -1,5 +1,5 @@
+import { CookieBanner } from "app/features/cookiebanner";
 import { BlogPosts } from "app/features/posts";
-import { CookieBanner } from "./features/cookiebanner";
 
 export default function Page() {
   return (

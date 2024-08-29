@@ -3,12 +3,18 @@ import clsx from "clsx";
 export function Card({
   children,
   className,
+  shadow = true,
 }: {
   children: React.ReactNode;
   className?: string;
+  shadow?: boolean;
 }) {
   return (
-    <div className={clsx("shadow-diagonal border bg-white", className)}>
+    <div
+      className={clsx("border border-black bg-white", className, {
+        "shadow-diagonal": shadow,
+      })}
+    >
       {children}
     </div>
   );

@@ -7,7 +7,6 @@ type ButtonProps = {
   children: React.ReactNode;
   className?: string;
   primary?: boolean;
-  handleClick?: () => void;
 } & React.ComponentProps<typeof HeadlessButton>;
 
 const hoverEffects =
@@ -17,26 +16,23 @@ export default function Button({
   children,
   className,
   primary,
-  handleClick,
   ...props
 }: ButtonProps) {
   return (
     <HeadlessButton
       className={clsx(
-        "flex items-center justify-center border px-1 py-2 text-sm",
+        "flex items-center justify-center border border-black px-1 py-2 text-sm",
         "transition-all ease-in-out",
         hoverEffects,
         className,
         {
-          "border-black bg-white text-black": !primary,
-          "border-white bg-black text-white outline outline-1 outline-black":
-            primary,
+          "bg-white text-black": !primary,
+          "bg-black text-white": primary,
         },
       )}
       {...props}
-      onClick={handleClick}
     >
-      Save changes
+      {children}
     </HeadlessButton>
   );
 }
