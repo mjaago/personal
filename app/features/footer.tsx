@@ -17,8 +17,8 @@ function ArrowIcon() {
 
 export default function Footer() {
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-y-2 space-x-0 text-neutral-600 md:flex-row md:space-y-0 md:space-x-4">
+    <footer className="mb-2">
+      {/*       <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0">
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800"
@@ -52,7 +52,7 @@ export default function Footer() {
             <p className="ml-2 h-7">view source</p>
           </a>
         </li>
-      </ul>
+      </ul> */}
       <p className="mt-8 text-neutral-600">
         © {new Date().getFullYear()} MIT Licensed
       </p>

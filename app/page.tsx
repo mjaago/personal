@@ -4,9 +4,7 @@ import { CookieBanner } from "./features/cookiebanner";
 export default function Page() {
   return (
     <div>
-      <div className="my-8">
-        <BlogPosts />
-      </div>
+      <BlogPosts />
       <CookieBanner />
     </div>
   );

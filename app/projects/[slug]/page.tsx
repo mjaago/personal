@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import { CustomMDX } from "app/features/mdx";
-import { formatDate, getBlogPosts } from "app/blog/utils";
+import { formatDate, getProjects } from "app/projects/utils";
 import { baseUrl } from "app/sitemap";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  let posts = getProjects();
 
   return posts.map((post) => ({
     slug: post.slug,
@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = getProjects().find((post) => post.slug === params.slug);
   if (!post) {
     return;
   }
@@ -52,7 +52,7 @@ export function generateMetadata({ params }) {
 }
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = getProjects().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -85,12 +85,12 @@ export default function Blog({ params }) {
       <h1 className="title text-2xl font-semibold tracking-tighter">
         {post.metadata.title}
       </h1>
-      <div className="mt-2 mb-8 flex items-center justify-between text-sm">
+      <div className="mb-8 mt-2 flex items-center justify-between text-sm">
         <p className="text-sm text-neutral-600">
           {formatDate(post.metadata.publishedAt)}
         </p>
       </div>
-      <article className="prose">
+      <article className="prose prose-pre:whitespace-pre-wrap max-w-none">
         <CustomMDX source={post.content} />
       </article>
     </section>

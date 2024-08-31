@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./features/footer";
 import { baseUrl } from "./sitemap";
 import clsx from "clsx";
+import { Card } from "./components/Card";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -52,10 +53,12 @@ export default function RootLayout({
       )}
     >
       <body className="m-0 h-full">
-        <main className="flex h-full gap-4 px-4 py-4">
-          <Navbar />
-          <div className="flex-1 py-4">
-            <div>{children}</div>
+        <main className="flex h-full gap-8 px-8 py-8 xl:justify-center xl:gap-12 xl:px-12">
+          <div className="h-full">
+            <Navbar />
+          </div>
+          <div className="flex h-full w-full min-w-96 max-w-[2048px] flex-1 flex-col">
+            <Card className="flex-1 px-8 py-4">{children}</Card>
             <Footer />
             <Analytics />
             <SpeedInsights />

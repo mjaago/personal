@@ -12,7 +12,7 @@ export function Card({
   return (
     <div
       className={clsx("border border-black bg-white", className, {
-        "shadow-diagonal": shadow,
+        "shadow-xl": shadow,
       })}
     >
       {children}

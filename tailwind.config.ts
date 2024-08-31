@@ -5,9 +5,9 @@ export default {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
-      boxShadow: { diagonal: "rgba(0, 0, 0, 0.35) -4px 4px 10px" },
-      borderWidth: {
-        DEFAULT: "2px",
+      colors: {
+        contrast: "rgb(130 255 229 / 40%)",
+        accent: "rgba(255, 167, 0, 0.4)",
       },
     },
     fontFamily: {
@@ -15,5 +15,5 @@ export default {
       display: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 } satisfies Config;
