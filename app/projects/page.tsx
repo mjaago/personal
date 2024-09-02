@@ -1,15 +1,11 @@
-import { BlogPosts } from "app/features/posts";
-
-export const metadata = {
-  title: "Blog",
-  description: "Read my blog.",
-};
+import { Heading } from "app/components/Heading";
+import { Projects } from "app/features/projects";
+import { SimplePageLayout } from "app/features/simplepagelayout";
 
 export default function Page() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">My Blog</h1>
-      <BlogPosts />
-    </section>
+    <SimplePageLayout title={<Heading.Page>Projects</Heading.Page>}>
+      <Projects />
+    </SimplePageLayout>
   );
 }

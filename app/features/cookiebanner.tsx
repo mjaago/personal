@@ -1,7 +1,7 @@
 "use client";
 
 import { Banner } from "app/components/Banner";
-import Button from "app/components/Button";
+import { Button } from "app/components/Button";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 

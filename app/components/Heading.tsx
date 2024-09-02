@@ -1,14 +1,55 @@
 import clsx from "clsx";
 
-export function Heading({ children }: { children: React.ReactNode }) {
+type HeadingProps = {
+  children: React.ReactNode;
+  underline?: boolean;
+  className?: string;
+};
+
+function PageHeading({ className, children, underline }: HeadingProps) {
   return (
-    <h1
+    <GenericHeading
+      className={clsx("text-2xl", className)}
+      as="h1"
+      underline={underline}
+    >
+      {children}
+    </GenericHeading>
+  );
+}
+
+function SectionHeading({ className, children, underline }: HeadingProps) {
+  return (
+    <GenericHeading
+      className={clsx("text-xl", className)}
+      as="h2"
+      underline={underline}
+    >
+      {children}
+    </GenericHeading>
+  );
+}
+
+function GenericHeading({
+  className,
+  children,
+  underline,
+  as = "h1",
+}: HeadingProps & {
+  as?: "h1" | "h2";
+}) {
+  const HeadingElement = as;
+  return (
+    <HeadingElement
       className={clsx(
-        "text-2xl",
-        "decoration-accent underline underline-offset-4",
+        {
+          "decoration-accent underline underline-offset-4": underline,
+        },
+        className,
       )}
     >
       {children}
-    </h1>
+    </HeadingElement>
   );
 }
+export const Heading = { Section: SectionHeading, Page: PageHeading };

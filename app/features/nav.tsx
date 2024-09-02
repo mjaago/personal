@@ -1,6 +1,14 @@
-import Button from "app/components/Button";
+"use client";
+
+import { Button } from "app/components/Button";
 import { Heading } from "app/components/Heading";
 import clsx from "clsx";
+import { TITLE_MARGIN } from "./simplepagelayout";
+import Image from "next/image";
+import me from "../media/me.jpg";
+import { Dropdown } from "app/components/Dropdown";
+import { Icon } from "app/components/Icon";
+import { CloseButton } from "@headlessui/react";
 
 const navItems = {
   "/about": {
@@ -9,37 +17,83 @@ const navItems = {
   "/projects": {
     name: "projects",
   },
-  "/contact-me": {
-    name: "contact me",
-  },
 };
 
 const socialIconStyle = "h-6 w-6";
 export function Navbar() {
   return (
-    <div className="flex h-full w-min min-w-72 flex-col items-center justify-between border border-black bg-white px-8 py-4 shadow-xl">
+    <div className="flex h-full w-min min-w-72 flex-col items-center border border-black bg-white px-8 py-4 shadow-xl">
+      <Heading.Page className={TITLE_MARGIN} underline>
+        Marten Jaago
+      </Heading.Page>
+      <NavbarContent />
+    </div>
+  );
+}
+
+const chevronStyles =
+  "h-6 w-6 text-zinc-500 transition-transform ease-in-out group-data-[open]:rotate-180";
+export function MobileNavbar() {
+  return (
+    <div>
+      <Dropdown
+        value={
+          <div className="flex w-full items-center justify-between px-4">
+            <Icon.ChevronDown className={chevronStyles} />
+            <Heading.Page underline>Marten Jaago</Heading.Page>
+            <Icon.ChevronDown className={chevronStyles} />
+          </div>
+        }
+      >
+        <div className="flex flex-col items-center justify-between px-6 py-6">
+          <NavbarContent />
+        </div>
+      </Dropdown>
+    </div>
+  );
+}
+
+function NavbarContent() {
+  return (
+    <div className="flex flex-col items-center justify-between sm:h-full">
       <div className="flex flex-col gap-4" id="nav">
-        <Heading>Marten Jaago</Heading>
-        <img src={"/me.jpg"} alt="Me" className={clsx("border border-black")} />
-        <p className="w-fit italic md:text-nowrap">
+        <Image
+          src={me}
+          alt="Me"
+          className={clsx("h-auto border border-black")}
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
+        <p className="w-fit italic sm:text-nowrap">
           a little rough around the edges
         </p>
         <div className="flex flex-col gap-3">
           {Object.entries(navItems).map(([path, { name }]) => {
             return (
-              <Button key={path} href={path}>
+              <CloseButton as={Button} key={path} href={path}>
                 {name}
-              </Button>
+              </CloseButton>
             );
           })}
         </div>
       </div>
-      <div className="flex gap-2">
-        <Button href="https://www.linkedin.com/in/marten-jaago/">
+      <div className="mt-8 flex gap-2 sm:mt-0">
+        <Button
+          className="h-10 w-10"
+          href="https://www.linkedin.com/in/marten-jaago/"
+        >
           <LinkedIn className={socialIconStyle}></LinkedIn>
         </Button>
-        <Button href="https://github.com/mjaago">
+        <Button className="h-10 w-10" href="https://github.com/mjaago">
           <Github className={socialIconStyle}></Github>
+        </Button>
+        <Button
+          className="h-10 w-10"
+          href="mailto:martenjaago@gmail.com?subject=Let's%20work%20together&body=Hey!%20I'd%20like%20to%20work%20with%20you."
+        >
+          <Icon.Mail className={socialIconStyle} />
         </Button>
       </div>
     </div>

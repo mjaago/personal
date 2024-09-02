@@ -1,13 +1,10 @@
-import { CookieBanner } from "app/features/cookiebanner";
-import { BlogPosts } from "app/features/posts";
+import { Heading } from "app/components/Heading";
+import { SimplePageLayout } from "app/features/simplepagelayout";
 
 export default function Page() {
   return (
-    <div>
-      <div className="my-8">
-        <BlogPosts />
-      </div>
-      <CookieBanner />
-    </div>
+    <SimplePageLayout title={<Heading.Page>About me</Heading.Page>}>
+      Big di*k
+    </SimplePageLayout>
   );
 }

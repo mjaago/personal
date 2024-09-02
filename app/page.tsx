@@ -1,11 +1,3 @@
-import { BlogPosts } from "app/features/posts";
-import { CookieBanner } from "./features/cookiebanner";
+import AboutPage from "./about/page";
 
-export default function Page() {
-  return (
-    <div>
-      <BlogPosts />
-      <CookieBanner />
-    </div>
-  );
-}
+export default AboutPage;

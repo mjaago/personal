@@ -11,8 +11,8 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-      display: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+      sans: ["var(--font-montserrat)", ...defaultTheme.fontFamily.sans],
+      display: ["var(--font-montserrat)", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [require("@tailwindcss/typography")],

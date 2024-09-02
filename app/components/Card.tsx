@@ -1,21 +1,31 @@
 import clsx from "clsx";
+import { forwardRef } from "react";
 
-export function Card({
-  children,
-  className,
-  shadow = true,
-}: {
+type CardProps = {
   children: React.ReactNode;
   className?: string;
   shadow?: boolean;
-}) {
+  media?: React.ReactNode;
+  title?: React.ReactNode;
+};
+export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
+  { children, className, shadow = true, media, title },
+  ref,
+) {
   return (
     <div
-      className={clsx("border border-black bg-white", className, {
-        "shadow-xl": shadow,
-      })}
+      ref={ref}
+      className={clsx(
+        "flex flex-col gap-3 border border-black bg-white",
+        className,
+        {
+          "shadow-xl": shadow,
+        },
+      )}
     >
-      {children}
+      {media ? <div>{media}</div> : undefined}
+      {title ? <div>{title}</div> : undefined}
+      <div>{children}</div>
     </div>
   );
-}
+});
