@@ -103,11 +103,18 @@ function NavbarContent() {
       <div className="mt-8 flex gap-2 sm:mt-0">
         <Button
           className="h-10 w-10"
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://www.linkedin.com/in/marten-jaago/"
         >
           <LinkedIn className={socialIconStyle}></LinkedIn>
         </Button>
-        <Button className="h-10 w-10" href="https://github.com/mjaago">
+        <Button
+          target="_blank"
+          rel="noopener noreferrer"
+          className="h-10 w-10"
+          href="https://github.com/mjaago"
+        >
           <Github className={socialIconStyle}></Github>
         </Button>
         <Button
