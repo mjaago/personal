@@ -23,7 +23,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
         },
       )}
     >
-      {media ? <div>{media}</div> : undefined}
+      {media ? media : undefined}
       {title ? <div>{title}</div> : undefined}
       <div>{children}</div>
     </div>

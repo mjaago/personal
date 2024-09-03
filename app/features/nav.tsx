@@ -13,16 +13,27 @@ import { CloseButton } from "@headlessui/react";
 const navItems = {
   "/about": {
     name: "about",
+    externalLink: false,
   },
   "/projects": {
     name: "projects",
+    externalLink: false,
+  },
+  "/marten_jaago-cv.pdf": {
+    name: "résumé",
+    externalLink: true,
   },
 };
 
 const socialIconStyle = "h-6 w-6";
-export function Navbar() {
+export function Navbar({ className }: { className?: string }) {
   return (
-    <div className="flex h-full w-min min-w-72 flex-col items-center border border-black bg-white px-8 py-4 shadow-xl">
+    <div
+      className={clsx(
+        "flex w-min min-w-72 flex-col items-center border border-black bg-white px-8 py-4 shadow-xl",
+        className,
+      )}
+    >
       <Heading.Page className={TITLE_MARGIN} underline>
         Marten Jaago
       </Heading.Page>
@@ -38,7 +49,7 @@ export function MobileNavbar() {
     <div>
       <Dropdown
         value={
-          <div className="flex w-full items-center justify-between px-4">
+          <div className="flex w-full items-center justify-between px-4 py-1">
             <Icon.ChevronDown className={chevronStyles} />
             <Heading.Page underline>Marten Jaago</Heading.Page>
             <Icon.ChevronDown className={chevronStyles} />
@@ -70,10 +81,20 @@ function NavbarContent() {
           a little rough around the edges
         </p>
         <div className="flex flex-col gap-3">
-          {Object.entries(navItems).map(([path, { name }]) => {
+          {Object.entries(navItems).map(([path, { name, externalLink }]) => {
             return (
-              <CloseButton as={Button} key={path} href={path}>
-                {name}
+              <CloseButton
+                as={Button}
+                key={path}
+                href={path}
+                {...(externalLink
+                  ? { target: "_blank", rel: "noopen noreferrer" }
+                  : {})}
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <span>{name}</span>
+                  {externalLink ? <Icon.ExternalLink /> : undefined}
+                </div>
               </CloseButton>
             );
           })}

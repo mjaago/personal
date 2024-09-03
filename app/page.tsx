@@ -1,3 +1,11 @@
 import AboutPage from "./about/page";
+import { CookieBanner } from "./features/cookiebanner";
 
-export default AboutPage;
+export default function Page() {
+  return (
+    <>
+      <AboutPage />
+      <CookieBanner />
+    </>
+  );
+}

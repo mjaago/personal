@@ -16,7 +16,10 @@ export function SimplePageLayout({
   title?: React.ReactNode;
 }) {
   return (
-    <MotionCard className={clsx("flex h-full flex-col px-8 py-4")} {...appear}>
+    <MotionCard
+      className={clsx("flex h-full w-full flex-col px-8 pb-6 pt-4")}
+      {...appear}
+    >
       {title ? <div className={TITLE_MARGIN}>{title}</div> : undefined}
       <div>{children}</div>
     </MotionCard>

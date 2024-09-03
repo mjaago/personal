@@ -4,8 +4,13 @@ import Image from "next/image";
 import workCDStartWorking from "../media/work_cd_start_working.jpg";
 import koosLobby from "../media/koos_joining_screen.png";
 import thisProductExistsBanner from "../media/this_product_exists.png";
+import grp from "../media/GRP.png";
+import align from "../media/align.svg";
+import compensationApp from "../media/comp_app.png";
+import fensterAnalytics from "../media/fenster_analytics.jpg";
+import clsx from "clsx";
 
-const imageClass = "h-auto w-100 border border-black";
+const imageClass = "h-auto w-full border border-black";
 
 const projectImages: Map<string, React.ReactNode> = new Map([
   [
@@ -32,13 +37,41 @@ const projectImages: Map<string, React.ReactNode> = new Map([
       className={imageClass}
     />,
   ],
+  [
+    "GRP",
+    <Image
+      src={grp}
+      alt="Global Risk Profile logo"
+      className={clsx(imageClass, "p-4")}
+    />,
+  ],
+  [
+    "ALIGN",
+    <Image src={align} alt="Align logo" className={clsx(imageClass, "p-4")} />,
+  ],
+  [
+    "COMPENSATION_APP",
+    <Image
+      src={compensationApp}
+      alt="Compensation App logo"
+      className={clsx(imageClass, "px-2 py-8")}
+    />,
+  ],
+  [
+    "FENSTER_ANALYTICS",
+    <Image
+      src={fensterAnalytics}
+      alt="Fenster Analytics logo"
+      className={clsx(imageClass, "px-20 py-4 md:px-24")}
+    />,
+  ],
 ]);
 
 export function Projects() {
   let allProjects = getProjects();
 
   return (
-    <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-12 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
       {allProjects
         .sort((a, b) => {
           if (
@@ -49,7 +82,7 @@ export function Projects() {
           return 1;
         })
         .map((project) => (
-          <div key={project.slug} className="flex-1">
+          <div key={project.metadata.title} className="flex-1">
             <ProjectCard
               project={project}
               media={
@@ -62,8 +95,4 @@ export function Projects() {
         ))}
     </div>
   );
-}
-
-export function ProjectImage({ image }: { image: React.ReactNode }) {
-  return { image };
 }

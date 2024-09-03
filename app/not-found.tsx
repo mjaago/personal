@@ -1,10 +1,10 @@
+import { Heading } from "./components/Heading";
+
 export default function NotFound() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        404 - Page Not Found
-      </h1>
-      <p className="mb-4">The page you are looking for does not exist.</p>
+      <Heading.Page>404 - Page Not Found</Heading.Page>
+      <p className="my-4">The page you are looking for does not exist.</p>
     </section>
-  )
+  );
 }

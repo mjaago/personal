@@ -10,8 +10,14 @@ type ButtonProps = {
   className?: string;
   primary?: boolean;
 } & (
-  | ({ href: string } & React.ComponentProps<typeof Link>)
-  | ({ href?: undefined } & React.ComponentProps<typeof HeadlessButton>)
+  | ({ href?: undefined } & Omit<
+      React.ComponentPropsWithoutRef<typeof HeadlessButton>,
+      "href"
+    >)
+  | ({ href: string } & Omit<
+      React.ComponentPropsWithoutRef<typeof Link>,
+      "href"
+    >)
 );
 
 export const hoverEffects =

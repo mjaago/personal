@@ -14,7 +14,7 @@ export function Dropdown({
   return (
     <div>
       <Popover className="group">
-        {({ open, close }) => (
+        {({ open }) => (
           <>
             <PopoverButton
               className="flex w-full items-center justify-center"

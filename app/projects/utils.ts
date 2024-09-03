@@ -6,6 +6,9 @@ type Metadata = {
   publishedAt: string;
   summary: string;
   imageKey: string;
+  image?: string;
+  tag?: string;
+  link?: string;
 };
 
 function parseFrontmatter(fileContent: string) {
@@ -39,12 +42,13 @@ function getMDXData(dir: string): Project[] {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file));
-    let slug = path.basename(file, path.extname(file));
+    const hasContent = content.length > 0;
+    let slug = hasContent ? path.basename(file, path.extname(file)) : undefined;
 
     return {
       metadata,
       slug,
-      content,
+      content: hasContent ? content : undefined,
     };
   });
 }
@@ -91,8 +95,14 @@ export function formatDate(date: string, includeRelative = false) {
   return `${fullDate} (${formattedDate})`;
 }
 
+export function hasSeparatePage(
+  project: Project,
+): project is Project & { slug: string } {
+  return !!project.slug;
+}
+
 export interface Project {
   metadata: Metadata;
-  slug: string;
-  content: string;
+  slug?: string;
+  content?: string;
 }
