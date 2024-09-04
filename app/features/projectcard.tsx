@@ -22,7 +22,7 @@ export function ProjectCard({
             <Heading.Section>{project.metadata.title}</Heading.Section>
           </LinkIfPossible>
           {project.metadata.tag ? (
-            <Badge className="mt-1">{project.metadata.tag}</Badge>
+            <Badge>{project.metadata.tag}</Badge>
           ) : undefined}
         </div>
       }

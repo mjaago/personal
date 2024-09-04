@@ -56,7 +56,7 @@ export default function RootLayout({
     >
       <body className="m-0">
         <main className="flex justify-center px-8 py-8">
-          <div className="flex min-w-[300px] max-w-[2048px] flex-col gap-8 sm:flex-row xl:justify-center xl:gap-12">
+          <div className="flex w-full min-w-[300px] max-w-[2048px] flex-col gap-8 sm:flex-row xl:justify-center xl:gap-12">
             <div className="hidden sm:block">
               <Navbar className="h-[calc(100vh-4rem)] max-h-[1080px]" />
             </div>

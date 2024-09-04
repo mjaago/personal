@@ -16,7 +16,7 @@ export function Banner({
         <motion.div {...appear}>
           <Card
             className={clsx(
-              "fixed bottom-6 left-1/2 z-50 w-[calc(100%-3rem)] -translate-x-1/2 border",
+              "fixed bottom-6 left-1/2 z-50 w-[calc(100%-2rem)] max-w-[2048px] -translate-x-1/2 border md:w-[calc(100%-3rem)]",
             )}
           >
             {children}

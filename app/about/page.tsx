@@ -8,13 +8,15 @@ export default function Page() {
     <SimplePageLayout title={<Heading.Page>About me</Heading.Page>}>
       <div className="flex flex-col gap-2">
         <p>
-          I’m a <b className="font-semibold">software engineer</b> from Estonia
-          currently living in Porto, Portugal.
+          I’m a <b className="font-semibold">full-stack product engineer</b>{" "}
+          from Estonia currently living in Porto, Portugal.
         </p>
         <p>
           In my early days I was an{" "}
-          <b className="font-semibold">aspiring boxer</b> dreaming about
-          competing on the big stage. You can see some of my{" "}
+          <b className="font-semibold">aspiring boxer</b> but after realizing
+          the uncertainty in pro-sports I{" "}
+          <b className="font-semibold">needed a change</b>. <br />
+          You can still see some of my{" "}
           <Link
             target="_blank"
             rel="noopener noreferrer"
@@ -22,8 +24,7 @@ export default function Page() {
           >
             fights here
           </Link>
-          . After realizing the uncertainty in pro-sports with all the injuries
-          I <b className="font-semibold">needed a change</b>.
+          .
         </p>
         <p>
           Since I’ve tinkered with computers from a young age the change was

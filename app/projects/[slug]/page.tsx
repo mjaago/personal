@@ -17,11 +17,6 @@ export default function Project({ params }) {
       title={
         <>
           <Heading.Page> {post.metadata.title}</Heading.Page>
-          <div className="mb-8 mt-2 flex items-center justify-between text-sm">
-            <p className="text-sm text-neutral-600">
-              {formatDate(post.metadata.publishedAt)}
-            </p>
-          </div>
         </>
       }
     >
@@ -47,7 +42,7 @@ export default function Project({ params }) {
           }),
         }}
       />
-      <article className="prose prose-pre:whitespace-pre-wrap prose-h2:font-normal prose-h2:text-xl prose-img:border prose-img:border-black max-w-none">
+      <article className="prose prose-pre:whitespace-pre-wrap prose-h2:font-normal prose-h2:text-xl prose-img:border prose-img:border-black hover:prose-a:decoration-accent prose-a:underline prose-a:underline-offset-2 prose-a:transition-colors prose-a:font-normal text-balck max-w-none">
         <CustomMDX source={post.content} />
       </article>
     </SimplePageLayout>
