@@ -32,7 +32,7 @@ export default function Page() {
           <b className="font-semibold">towards computer science</b>.
         </p>
 
-        <Quote>
+        <Quote by="Uku Tammet, CTO, Align">
           Marten is a machine, motivated and independent, willing to learn
           whatever he needs to increase his impact
         </Quote>
@@ -49,10 +49,17 @@ export default function Page() {
             <li>GitHub Actions</li>
           </ul>
         </div>
+
         <p>
           If you want to see some of my work and side-projects head to the{" "}
           <Link href="/projects">projects page</Link>.
         </p>
+
+        <Quote by="Andrea Rigodanzo, ex-COO, Global Risk Profile">
+          He was instrumental in reassessing architectural choices and didn't
+          shy away from difficult decisions. He is reliable, self-driven,
+          curious, asks the right questions, owns his work and grows with it.
+        </Quote>
         <p>
           I also have a beautiful wife and an amazing son for whom I'm forever
           grateful.

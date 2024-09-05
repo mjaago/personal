@@ -1,4 +1,6 @@
-import { getProjects } from "app/projects/utils";
+"use client";
+
+import { Project } from "app/projects/utils";
 import { ProjectCard } from "./projectcard";
 import Image from "next/image";
 import workCDStartWorking from "../media/work_cd_start_working.jpg";
@@ -9,6 +11,7 @@ import align from "../media/align.svg";
 import compensationApp from "../media/comp_app.png";
 import fensterAnalytics from "../media/fenster_analytics.jpg";
 import clsx from "clsx";
+import { Masonry } from "masonic";
 
 const imageClass = "h-auto w-full border border-black";
 
@@ -67,32 +70,26 @@ const projectImages: Map<string, React.ReactNode> = new Map([
   ],
 ]);
 
-export function Projects() {
-  let allProjects = getProjects();
-
+export function Projects({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid grid-cols-1 gap-12 sm:gap-4 lg:grid-cols-2 xl:grid-cols-3">
-      {allProjects
-        .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
-            return -1;
-          }
-          return 1;
-        })
-        .map((project) => (
-          <div key={project.metadata.title} className="flex-1">
-            <ProjectCard
-              project={project}
-              media={
-                projectImages.has(project.metadata.imageKey)
-                  ? projectImages.get(project.metadata.imageKey)
-                  : undefined
-              }
-            />
-          </div>
-        ))}
-    </div>
+    <Masonry
+      columnWidth={300}
+      columnGutter={28}
+      maxColumnCount={3}
+      items={projects.sort((a, b) => {
+        if (
+          new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+        ) {
+          return -1;
+        }
+        return 1;
+      })}
+      render={({ data: project }) => (
+        <ProjectCard
+          project={project}
+          media={projectImages.get(project.metadata.imageKey)}
+        />
+      )}
+    />
   );
 }
