@@ -4,7 +4,6 @@ import { Montserrat } from "next/font/google";
 import { MobileNavbar, Navbar } from "./features/nav";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Footer from "./features/footer";
 import { baseUrl } from "./sitemap";
 import clsx from "clsx";
 
@@ -65,7 +64,6 @@ export default function RootLayout({
             </div>
             <div className="flex w-full flex-1 flex-col">
               <div className="flex-1">{children}</div>
-              <Footer />
               <Analytics />
               <SpeedInsights />
             </div>
