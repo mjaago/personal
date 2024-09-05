@@ -2,7 +2,7 @@ import { Badge } from "app/components/Badge";
 import { Button } from "app/components/Button";
 import { Card } from "app/components/Card";
 import { Heading } from "app/components/Heading";
-import { Icon } from "app/components/Icon";
+import { Shimmer } from "app/components/Shimmer";
 import { WithExternalLink } from "app/components/WithExternalLink";
 import { hasSeparatePage, Project } from "app/projects/utils";
 import Link from "next/link";
@@ -19,14 +19,14 @@ export function ProjectCard({
       className="px-6 py-4"
       media={<LinkIfPossible project={project}>{media}</LinkIfPossible>}
       title={
-        <div>
+        <>
           <LinkIfPossible project={project}>
             <Heading.Section>{project.metadata.title}</Heading.Section>
           </LinkIfPossible>
           {project.metadata.tag ? (
             <Badge>{project.metadata.tag}</Badge>
           ) : undefined}
-        </div>
+        </>
       }
       shadow={false}
     >
@@ -52,6 +52,34 @@ export function ProjectCard({
             <WithExternalLink>Check it out</WithExternalLink>
           </Button>
         ) : undefined}
+      </div>
+    </Card>
+  );
+}
+
+export function ShimmeringProjectCard() {
+  return (
+    <Card
+      className="px-6 py-4"
+      media={<Shimmer className="h-40 w-full border border-black" />}
+      title={
+        <>
+          <Shimmer className="mb-0.5 h-6 w-32" />
+          <Shimmer className="h-6 w-16 border border-black" />
+        </>
+      }
+      shadow={false}
+    >
+      <div className="flex flex-col gap-4">
+        <div className="flex w-full flex-col">
+          <Shimmer className="mb-1 h-5 w-[95%]"></Shimmer>
+          <Shimmer className="mb-1 h-5 w-full"></Shimmer>
+          <Shimmer className="mb-1 h-5 w-[90%]"></Shimmer>
+          <Shimmer className="mb-1 h-5 w-[92%]"></Shimmer>
+          <Shimmer className="mb-1 h-5 w-[96%]"></Shimmer>
+        </div>
+
+        <Shimmer className="h-10 w-32 border-2 border-black" />
       </div>
     </Card>
   );

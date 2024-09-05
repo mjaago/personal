@@ -1,7 +1,7 @@
 "use client";
 
 import { Project } from "app/projects/utils";
-import { ProjectCard } from "./projectcard";
+import { ProjectCard, ShimmeringProjectCard } from "./projectcard";
 import Image from "next/image";
 import workCDStartWorking from "../media/work_cd_start_working.jpg";
 import koosLobby from "../media/koos_joining_screen.png";
@@ -11,7 +11,25 @@ import align from "../media/align.svg";
 import compensationApp from "../media/comp_app.png";
 import fensterAnalytics from "../media/fenster_analytics.jpg";
 import clsx from "clsx";
-import { Masonry } from "masonic";
+import { AnimatePresence, motion } from "framer-motion";
+import { appear } from "app/components/animations";
+import {
+  createContext,
+  Dispatch,
+  lazy,
+  SetStateAction,
+  Suspense,
+  useContext,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from "react";
+
+const MasonryLayout = lazy(() =>
+  import("./masonrylayout").then((module) => ({
+    default: module.MasonryLayout<Project>,
+  })),
+);
 
 const imageClass = "h-auto w-full border border-black";
 
@@ -71,25 +89,63 @@ const projectImages: Map<string, React.ReactNode> = new Map([
 ]);
 
 export function Projects({ projects }: { projects: Project[] }) {
+  const [loaderCount, setLoaderCount] = useState(0);
+  console.log(loaderCount);
   return (
-    <Masonry
-      columnWidth={300}
-      columnGutter={28}
-      maxColumnCount={3}
-      items={projects.sort((a, b) => {
-        if (
-          new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-        ) {
-          return -1;
-        }
-        return 1;
-      })}
-      render={({ data: project }) => (
-        <ProjectCard
-          project={project}
-          media={projectImages.get(project.metadata.imageKey)}
-        />
-      )}
-    />
+    <AnimatePresence mode="popLayout">
+      {loaderCount > 0 ? (
+        <motion.div
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 2xl:grid-cols-3"
+          {...appear}
+        >
+          <ShimmeringProjectCard />
+          <ShimmeringProjectCard />
+          <ShimmeringProjectCard />
+          <ShimmeringProjectCard />
+          <ShimmeringProjectCard />
+          <ShimmeringProjectCard />
+          <ShimmeringProjectCard />
+        </motion.div>
+      ) : undefined}
+      <Suspense fallback={<LoaderHandler setLoaderCount={setLoaderCount} />}>
+        <motion.div {...appear}>
+          <MasonryLayout
+            items={projects.sort((a, b) => {
+              if (
+                new Date(a.metadata.publishedAt) >
+                new Date(b.metadata.publishedAt)
+              ) {
+                return -1;
+              }
+              return 1;
+            })}
+            render={({ data: project }) => (
+              <ProjectCard
+                project={project}
+                media={projectImages.get(project.metadata.imageKey)}
+              />
+            )}
+          />
+        </motion.div>
+      </Suspense>
+    </AnimatePresence>
   );
+}
+
+function LoaderHandler({
+  setLoaderCount,
+}: {
+  setLoaderCount: Dispatch<SetStateAction<number>>;
+}) {
+  useLayoutEffect(() => {
+    setLoaderCount((c) => {
+      return c + 1;
+    });
+    return () => {
+      setLoaderCount((c) => {
+        return c - 1;
+      });
+    };
+  }, []);
+  return <></>;
 }
