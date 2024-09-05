@@ -2,6 +2,8 @@ import { Badge } from "app/components/Badge";
 import { Button } from "app/components/Button";
 import { Card } from "app/components/Card";
 import { Heading } from "app/components/Heading";
+import { Icon } from "app/components/Icon";
+import { WithExternalLink } from "app/components/WithExternalLink";
 import { hasSeparatePage, Project } from "app/projects/utils";
 import Link from "next/link";
 
@@ -47,7 +49,7 @@ export function ProjectCard({
             primary
             className="w-fit"
           >
-            Check it out
+            <WithExternalLink>Check it out</WithExternalLink>
           </Button>
         ) : undefined}
       </div>
