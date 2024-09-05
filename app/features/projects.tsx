@@ -14,14 +14,11 @@ import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { appear } from "app/components/animations";
 import {
-  createContext,
   Dispatch,
   lazy,
   SetStateAction,
   Suspense,
-  useContext,
   useLayoutEffect,
-  useMemo,
   useState,
 } from "react";
 
@@ -89,12 +86,11 @@ const projectImages: Map<string, React.ReactNode> = new Map([
 ]);
 
 export function Projects({ projects }: { projects: Project[] }) {
-  const [loaderCount, setLoaderCount] = useState(0);
-  console.log(loaderCount);
   return (
-    <AnimatePresence mode="popLayout">
-      {loaderCount > 0 ? (
+    <Suspense
+      fallback={
         <motion.div
+          key="loader"
           className="grid grid-cols-1 gap-8 sm:grid-cols-2 2xl:grid-cols-3"
           {...appear}
         >
@@ -106,46 +102,27 @@ export function Projects({ projects }: { projects: Project[] }) {
           <ShimmeringProjectCard />
           <ShimmeringProjectCard />
         </motion.div>
-      ) : undefined}
-      <Suspense fallback={<LoaderHandler setLoaderCount={setLoaderCount} />}>
-        <motion.div {...appear}>
-          <MasonryLayout
-            items={projects.sort((a, b) => {
-              if (
-                new Date(a.metadata.publishedAt) >
-                new Date(b.metadata.publishedAt)
-              ) {
-                return -1;
-              }
-              return 1;
-            })}
-            render={({ data: project }) => (
-              <ProjectCard
-                project={project}
-                media={projectImages.get(project.metadata.imageKey)}
-              />
-            )}
-          />
-        </motion.div>
-      </Suspense>
-    </AnimatePresence>
+      }
+    >
+      <motion.div {...appear} key="projects">
+        <MasonryLayout
+          items={projects.sort((a, b) => {
+            if (
+              new Date(a.metadata.publishedAt) >
+              new Date(b.metadata.publishedAt)
+            ) {
+              return -1;
+            }
+            return 1;
+          })}
+          render={({ data: project }) => (
+            <ProjectCard
+              project={project}
+              media={projectImages.get(project.metadata.imageKey)}
+            />
+          )}
+        />
+      </motion.div>
+    </Suspense>
   );
-}
-
-function LoaderHandler({
-  setLoaderCount,
-}: {
-  setLoaderCount: Dispatch<SetStateAction<number>>;
-}) {
-  useLayoutEffect(() => {
-    setLoaderCount((c) => {
-      return c + 1;
-    });
-    return () => {
-      setLoaderCount((c) => {
-        return c - 1;
-      });
-    };
-  }, []);
-  return <></>;
 }

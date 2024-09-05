@@ -5,18 +5,21 @@ import { Heading } from "app/components/Heading";
 import { Shimmer } from "app/components/Shimmer";
 import { WithExternalLink } from "app/components/WithExternalLink";
 import { hasSeparatePage, Project } from "app/projects/utils";
+import clsx from "clsx";
 import Link from "next/link";
 
 export function ProjectCard({
   project,
   media,
+  className,
 }: {
   project: Project;
   media?: React.ReactNode;
+  className?: string;
 }) {
   return (
     <Card
-      className="px-6 py-4"
+      className={clsx("px-6 py-4", className)}
       media={<LinkIfPossible project={project}>{media}</LinkIfPossible>}
       title={
         <>
@@ -79,7 +82,7 @@ export function ShimmeringProjectCard() {
           <Shimmer className="mb-1 h-5 w-[96%]"></Shimmer>
         </div>
 
-        <Shimmer className="h-10 w-32 border-2 border-black" />
+        <Shimmer className="h-9 w-32 border-2 border-black" />
       </div>
     </Card>
   );
