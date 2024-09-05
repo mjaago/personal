@@ -71,11 +71,7 @@ function NavbarContent() {
         <Image
           src={me}
           alt="Me"
-          className={clsx("h-auto border border-black")}
-          style={{
-            width: "100%",
-            height: "auto",
-          }}
+          className={clsx("h-auto w-full border border-black")}
         />
         <p className="w-fit italic sm:text-nowrap">
           a little rough around the edges
