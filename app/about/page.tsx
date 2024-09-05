@@ -32,7 +32,7 @@ export default function Page() {
           <b className="font-semibold">towards computer science</b>.
         </p>
 
-        <Quote by="Uku Tammet, CTO, Align">
+        <Quote by="Uku Tammet, CTO, Align" className="my-2">
           Marten is a machine, motivated and independent, willing to learn
           whatever he needs to increase his impact
         </Quote>
@@ -55,7 +55,10 @@ export default function Page() {
           <Link href="/projects">projects page</Link>.
         </p>
 
-        <Quote by="Andrea Rigodanzo, ex-COO, Global Risk Profile">
+        <Quote
+          by="Andrea Rigodanzo, ex-COO, Global Risk Profile"
+          className="my-2"
+        >
           He was instrumental in reassessing architectural choices and didn't
           shy away from difficult decisions. He is reliable, self-driven,
           curious, asks the right questions, owns his work and grows with it.
