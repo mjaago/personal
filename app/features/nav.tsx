@@ -11,14 +11,6 @@ import { Icon } from "app/components/Icon";
 import { CloseButton } from "@headlessui/react";
 
 const navItems = {
-  "/about": {
-    name: "about",
-    externalLink: false,
-  },
-  "/projects": {
-    name: "projects",
-    externalLink: false,
-  },
   "/marten_jaago-cv.pdf": {
     name: "résumé",
     externalLink: true,
@@ -30,7 +22,7 @@ export function Navbar({ className }: { className?: string }) {
   return (
     <div
       className={clsx(
-        "flex w-min min-w-72 flex-col items-center border border-black bg-white px-8 py-4 shadow-xl",
+        "flex w-min min-w-72 flex-col items-center overflow-y-auto border border-black bg-white px-8 py-4 shadow-xl",
         className,
       )}
     >

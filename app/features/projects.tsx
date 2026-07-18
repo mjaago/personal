@@ -9,7 +9,7 @@ import thisProductExistsBanner from "../media/this_product_exists.png";
 import grp from "../media/GRP.png";
 import align from "../media/align.svg";
 import compensationApp from "../media/comp_app.png";
-import fensterAnalytics from "../media/fenster_analytics.jpg";
+import prain from "../media/prain.svg";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { appear } from "app/components/animations";
@@ -76,11 +76,11 @@ const projectImages: Map<string, React.ReactNode> = new Map([
     />,
   ],
   [
-    "FENSTER_ANALYTICS",
+    "PRAIN",
     <Image
-      src={fensterAnalytics}
-      alt="Fenster Analytics logo"
-      className={clsx(imageClass, "px-20 py-4 md:px-24")}
+      src={prain}
+      alt="Prain logo: a green progress curve crossing a red pain curve"
+      className={clsx(imageClass, "px-12 py-8 md:px-16")}
     />,
   ],
 ]);

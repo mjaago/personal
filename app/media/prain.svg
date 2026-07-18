@@ -1,0 +1,11 @@
+<svg width="320" height="120" viewBox="0 0 320 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 16 C 42 14, 50 46, 60 60 S 84 104, 108 106" stroke="#e5678a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M12 106 C 42 108, 50 74, 60 60 S 84 16, 108 14" stroke="#4fd6b8" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="108" cy="106" r="6.5" fill="#e5678a"/>
+  <circle cx="108" cy="14" r="6.5" fill="#4fd6b8"/>
+  <text x="150" y="62" font-family="Helvetica, Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="-0.02em" fill="#1a1a1a">Prain</text>
+  <rect x="152" y="88" width="13" height="13" rx="3.5" fill="#4fd6b8"/>
+  <text x="173" y="99.5" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#6b7280">progress</text>
+  <rect x="248" y="88" width="13" height="13" rx="3.5" fill="#e5678a"/>
+  <text x="269" y="99.5" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#6b7280">pain</text>
+</svg>
