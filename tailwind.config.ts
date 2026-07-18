@@ -9,6 +9,15 @@ export default {
         contrast: "rgb(130 255 229 / 40%)",
         accent: "rgba(255, 167, 0, 0.4)",
       },
+      keyframes: {
+        appear: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+      },
+      animation: {
+        appear: "appear 0.3s ease-out",
+      },
     },
     fontFamily: {
       sans: ["var(--font-montserrat)", ...defaultTheme.fontFamily.sans],
